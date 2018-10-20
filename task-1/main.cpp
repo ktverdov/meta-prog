@@ -35,7 +35,20 @@ void test_proxy() {
 }
 
 void test_mediator() {
+	cout << "TEST MEDIATOR BEHAVIOUR" << endl;
 
+	auto mediator = new C<Type::Mediator>();
+	A * client = new A(mediator);
+	
+	B * target_1 = new B(1);
+	B * target_2 = new B(2);
+
+	mediator->add(target_1);
+	mediator->add(target_2);
+
+	client->contact(1, 2);
+
+	cout << endl;
 }
 
 int main() {

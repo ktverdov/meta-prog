@@ -2,21 +2,21 @@
 
 #include "Interfaces.h"
 
-class B : public IServer {
+class B : public IB {
 	public:
+		B() {}
+		B(int id_) : id(id_) {}
+
 		void request() {
 			cout << "Server recieved request" << endl;
 		}
+
+		void recieve(int message) {
+			cout << "Recived message " << message << endl;
+		}
+
+		int get_id() { return id; }
+
+	private:
+		int id;
 };
-
-// class BObserver : public AbstractBObserver {
-// 	public:
-// 		BObserver(int state_) { state = state_; }
-
-// 		void change(int new_state) {
-// 			state = new_state;
-// 		}
-
-// 	private:
-// 		int state;
-// };

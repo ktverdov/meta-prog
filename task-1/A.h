@@ -10,8 +10,16 @@ class A : public IObserver {
 			proxy = proxy_;
 		}
 
-		void handle(int message) {
+		A(IMediator * m_) {
+			mediator = m_;			
+		}
+
+		void handle(int message) override {
         	cout << name << " recieve message: " << message << endl;
+		}
+
+		void contact(int message, int id) {
+			mediator->contact(message, id);
 		}
 
 		void do_something() {
@@ -20,6 +28,7 @@ class A : public IObserver {
 		}
 
 	private:
+		IMediator * mediator;
 		IServer * proxy;
 		string name;
 };

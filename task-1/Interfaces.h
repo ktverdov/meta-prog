@@ -1,7 +1,6 @@
 #pragma once
 
 #include <iostream>
-
 #include <vector>
 #include <string>
 #include <set>
@@ -25,7 +24,14 @@ class IServer {
 		virtual void request() = 0;
 };
 
-// class AbstractBObserver {
-// 	public:
-// 		virtual void change(int new_state) = 0;
-// };
+class IB : public IServer {
+	public:
+		virtual void recieve(int message) = 0;
+		virtual int get_id() = 0;
+};
+
+class IMediator {
+	public:
+		virtual void add(IB * target) = 0;
+		virtual void contact(int message, int id) = 0;
+};
