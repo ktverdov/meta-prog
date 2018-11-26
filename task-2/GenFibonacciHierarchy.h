@@ -7,7 +7,7 @@
 template < class TList, 
 			template <class AtomicType, class Base> class Unit,
 			unsigned long prev=0,
-			unsigned long curr=0
+			unsigned long curr=1
 				>
 class GenFibonacciHierarchy;
 
@@ -18,24 +18,24 @@ template < class ...Args,
 			unsigned long curr
 				>
 class GenFibonacciHierarchy<TypeList<Args... >, Unit, prev, curr>
-	: public GenLinearHierarchy< typename GetBeforeIndex<TypeList<Args... >, curr>::result, 
+	: public GenLinearHierarchy< typename GetBeforeIndex<TypeList<Args... >, curr + 1>::result, 
 									Unit
 										>, 
-	  public GenFibonacciHierarchy< typename GetAfterIndex<TypeList<Args... >, curr>::result, 
-	  								Unit, 
-	  								curr, 
-	  								prev + curr
-	  									> {
+	  public GenFibonacciHierarchy< typename GetAfterIndex<TypeList<Args... >, curr + 1>::result, 
+									Unit, 
+									curr, 
+									prev + curr
+										> {
 	public:
 		using TList = TypeList<Args... >;
 
-		using LeftBase = GenLinearHierarchy< typename GetBeforeIndex<TList, curr>::result, Unit >;
+		using LeftBase = GenLinearHierarchy< typename GetBeforeIndex<TList, curr + 1>::result, Unit >;
 		
-		using RightBase =  GenFibonacciHierarchy< typename GetAfterIndex<TList, curr>::result, 
-	  												Unit, 
-	  												curr, 
-	  												prev + curr
-	  													>;
+		using RightBase =  GenFibonacciHierarchy< typename GetAfterIndex<TList, curr + 1>::result, 
+													Unit, 
+													curr, 
+													prev + curr
+														>;
 };
 
 

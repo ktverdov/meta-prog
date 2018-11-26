@@ -20,30 +20,30 @@ template <class T, class Base>
 class Handler: public Base
 {
 public:
-    virtual void OnEvent(T& obj){
-        std::cout<<sizeof(T)<<std::endl;
-    }
+	virtual void OnEvent(T& obj){
+		std::cout<<sizeof(T)<<std::endl;
+	}
 };
 
 class A{
-    int val;
+	int val;
 public:
-    int f1();
+	int f1();
 };
 
 class B{
-    char val;
+	char val;
 public:
-    int f2();
+	int f2();
 };
 
 class C{
-    double val;
+	double val;
 public:
-    int f3();
+	int f3();
 };
 
-using hierarchy =  GenFibonacciHierarchy<TypeList<A, B, C>, Handler>;
+using hierarchy =  GenFibonacciHierarchy<TypeList<A, B, C, B, C, A, A, B, C>, Handler>;
 
 
 int main() {
