@@ -27,6 +27,12 @@ class GenFibonacciHierarchy<TypeList<Args... >, Unit, prev, curr>
 									prev + curr
 										> {
 	public:
+		GenFibonacciHierarchy() {
+			std::cout << "GenFibonacciHierarchy" << std::endl;
+			Print<TypeList<Args... > >::print();
+		}
+
+
 		using TList = TypeList<Args... >;
 
 		using LeftBase = GenLinearHierarchy< typename GetBeforeIndex<TList, curr + 1>::result, Unit >;

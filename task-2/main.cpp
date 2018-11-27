@@ -36,27 +36,31 @@ namespace test_typelist
 
 
 template <class T, class Base>
-class Handler: public Base
+class EventHandler: public Base
 {
 public:
-	virtual void OnEvent(T& obj) {}
+	virtual void OnEvent(T& obj, int eventId) {}
 };
 
 // using hierarchy =  GenFibonacciHierarchy<TypeList<A, B, C, B, C, A, A, B, C>, Handler>;
 // using hierarchy =  GenFibonacciHierarchy<TypeList<A, B, C>, Handler>;
 
+class A {};
+class B {};
+class C {};
+class D {};
+class E {};
+class F {};
+class G {};
+class K {};
+class I {};
 
-template <typename T, typename Base>
-class EventHandler : public Base {
-	public:
-		virtual void OnEvent(T& obj) = 0;
-};
 
-using linear_hierarchy = GenFibonacciHierarchy<TypeList<int, char, double>, EventHandler>;
+using hierarchy = GenFibonacciHierarchy<TypeList<A, B, C, D, E, F, G, K, I>, EventHandler>;
 
 int main() {	
 
-	linear_hierarchy test_obj;
+	hierarchy test_obj;
 
 	return 0;
 }

@@ -22,10 +22,10 @@ class GenLinearHierarchy<TypeList<Head, Tail... >, Unit, Root>
 	: public Unit< Head, GenLinearHierarchy< TypeList<Tail... >, Unit, Root> > {
 	
 	public:
-		// GenLinearHierarchy() {
-		// 	std::cout << "GenLinearHierarchy" << std::endl;
-		// 	Print<TypeList<Head, Tail... > >::print();
-		// }
+		GenLinearHierarchy() {
+			std::cout << "GenLinearHierarchy" << std::endl;
+			Print<TypeList<Head, Tail... > >::print();
+		}
 };
 
 
@@ -34,7 +34,14 @@ template <class AtomicType,
 			class Root
 				>
 class GenLinearHierarchy<TypeList<AtomicType>, Unit, Root> 
-	: public Unit<AtomicType, Root> {};
+	: public Unit<AtomicType, Root> {
+	
+	public:
+		GenLinearHierarchy() {
+			std::cout << "GenLinearHierarchy" << std::endl;
+			Print<TypeList<AtomicType> >::print();
+		}
+};
 
 
 template <template <class, class> class Unit, class Root>
