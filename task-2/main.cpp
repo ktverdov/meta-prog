@@ -42,9 +42,6 @@ public:
 	virtual void OnEvent(T& obj, int eventId) {}
 };
 
-// using hierarchy =  GenFibonacciHierarchy<TypeList<A, B, C, B, C, A, A, B, C>, Handler>;
-// using hierarchy =  GenFibonacciHierarchy<TypeList<A, B, C>, Handler>;
-
 class A {};
 class B {};
 class C {};
