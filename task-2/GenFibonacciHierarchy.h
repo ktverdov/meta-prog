@@ -43,4 +43,4 @@ template < template <class AtomicType, class Base> class Unit,
 			unsigned long prev, 
 			unsigned long curr
 				>
-class GenFibonacciHierarchy< NullType, Unit, prev, curr > {};
+class GenFibonacciHierarchy< TypeList<>, Unit, prev, curr > {};

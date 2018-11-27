@@ -8,18 +8,25 @@ class EmptyType {};
 
 template < class TList, 
 			template <class AtomicType, class Base> class Unit, 
-			class Root = EmptyType
+			class Root = NullType
 				>
 class GenLinearHierarchy;
 
 
-template < class T1, 
-			class T2, 
+template < class Head,
+			class ...Tail, 
 			template <class, class> class Unit, 
 			class Root
 				>
-class GenLinearHierarchy<TypeList<T1, T2>, Unit, Root> 
-	: public Unit<T1, GenLinearHierarchy<T2, Unit, Root>> {};
+class GenLinearHierarchy<TypeList<Head, Tail... >, Unit, Root> 
+	: public Unit< Head, GenLinearHierarchy< TypeList<Tail... >, Unit, Root> > {
+	
+	public:
+		// GenLinearHierarchy() {
+		// 	std::cout << "GenLinearHierarchy" << std::endl;
+		// 	Print<TypeList<Head, Tail... > >::print();
+		// }
+};
 
 
 template <class AtomicType,
@@ -30,6 +37,6 @@ class GenLinearHierarchy<TypeList<AtomicType>, Unit, Root>
 	: public Unit<AtomicType, Root> {};
 
 
-// template <template <typename, typename> typename Unit, typename Root>
-// class GenLinearHierarchy<NullType , Unit, Root>
-// 		: public Root {};
+template <template <class, class> class Unit, class Root>
+class GenLinearHierarchy<NullType , Unit, Root>
+		: public Root {};
